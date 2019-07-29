@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#202632">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="210dp">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/huatec_logo" />
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/et_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:drawableLeft="@mipmap/icon_user"
+            android:drawablePadding="10dp"
+            android:hint="用户名/邮箱"
+            android:lines="1"
+            android:paddingBottom="15dp"
+            android:textColor="#ffffff"
+            android:textColorHint="#999999"
+            android:textSize="16sp" />
+
+
+        <EditText
+            android:id="@+id/et_user_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:drawableLeft="@mipmap/icon_password"
+            android:drawablePadding="10dp"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:lines="1"
+            android:paddingBottom="15dp"
+            android:textColor="#ffffff"
+            android:textColorHint="#999999"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/bt_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="23dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="55dp"
+            android:background="@drawable/login_button_bg"
+            android:text="登录"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/forget_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="27dp"
+            android:layout_marginRight="25dp"
+            android:clickable="true"
+            android:gravity="end"
+            android:padding="5dp"
+            android:text="忘记密码？"
+            android:textColor="#05EEFF" />
+
+        <TextView
+            android:id="@+id/link_signup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:text="没有账户吗？创建账户"
+            android:textColor="#05EEFF"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</ScrollView>
+
+
