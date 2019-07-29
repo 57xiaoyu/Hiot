@@ -5,6 +5,7 @@ import com.cch.hiot2.injection.PerActivity;
 import com.cch.hiot2.injection.module.ActivityModule;
 import com.cch.hiot2.ui.datahistory.DataHistoryActivity;
 import com.cch.hiot2.ui.devicedetail.DeviceDetailActivity;
+import com.cch.hiot2.ui.gpsdata.GpsHistoryActivity;
 import com.cch.hiot2.ui.login.LoginActivity;
 import com.cch.hiot2.ui.main.MainActivity;
 import com.cch.hiot2.ui.main.equipment.EquipmentFragment;
@@ -38,6 +39,8 @@ public interface ActivityComponent {
     void inject(DeviceDetailActivity deviceDetailActivity);
 
     void inject(DataHistoryActivity dataHistoryActivity);
+
+    void inject(GpsHistoryActivity gpsHistoryActivity);
 }
 
 

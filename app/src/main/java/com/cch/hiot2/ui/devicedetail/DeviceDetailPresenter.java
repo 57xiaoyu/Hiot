@@ -19,6 +19,7 @@ import com.cch.hiot2.http.HttpService;
 import com.cch.hiot2.http.ProgressDialogSubscriber;
 import com.cch.hiot2.http.UserPreferencesHelper;
 import com.cch.hiot2.ui.datahistory.DataHistoryActivity;
+import com.cch.hiot2.ui.gpsdata.GpsHistoryActivity;
 
 import java.util.List;
 
@@ -190,7 +191,7 @@ public class DeviceDetailPresenter extends BasePresenter<DeviceDetailView> {
                 //取集合中第一个数据
                 DeviceDetailEntity.DataList dataList = updatastreams.getDataList().get(0);
                 value.setText("经度：" + dataList.getLongitude() + "\n纬度：" + dataList.getLatitude());
-                setHistoryClick(value_look_more,updatastreams.getData_type(),dataList);
+                setGpsHistoryClick(value_look_more,updatastreams.getData_type(),dataList);
             } else {
                 value.setText("暂无位置数据");
             }
@@ -257,6 +258,18 @@ public class DeviceDetailPresenter extends BasePresenter<DeviceDetailView> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activity, DataHistoryActivity.class);
+                intent.putExtra(DataHistoryActivity.DATA_TYPE_EXTRA,data_type);
+                intent.putExtra(DataHistoryActivity.DATA_UPDATA_STREAM_ID_EXTRA,data.getUpDataStreamId());
+                activity.startActivity(intent);
+            }
+        });
+    }
+
+    private void setGpsHistoryClick(ImageView put_value,final int data_type,final DeviceDetailEntity.DataList data) {
+        put_value.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, GpsHistoryActivity.class);
                 intent.putExtra(DataHistoryActivity.DATA_TYPE_EXTRA,data_type);
                 intent.putExtra(DataHistoryActivity.DATA_UPDATA_STREAM_ID_EXTRA,data.getUpDataStreamId());
                 activity.startActivity(intent);
