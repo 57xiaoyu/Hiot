@@ -3,6 +3,7 @@ package com.cch.hiot2.injection.component;
 
 import com.cch.hiot2.injection.PerActivity;
 import com.cch.hiot2.injection.module.ActivityModule;
+import com.cch.hiot2.ui.datahistory.DataHistoryActivity;
 import com.cch.hiot2.ui.devicedetail.DeviceDetailActivity;
 import com.cch.hiot2.ui.login.LoginActivity;
 import com.cch.hiot2.ui.main.MainActivity;
@@ -35,6 +36,8 @@ public interface ActivityComponent {
     void inject(ZxingActivity zxingActivity);
 
     void inject(DeviceDetailActivity deviceDetailActivity);
+
+    void inject(DataHistoryActivity dataHistoryActivity);
 }
 
 

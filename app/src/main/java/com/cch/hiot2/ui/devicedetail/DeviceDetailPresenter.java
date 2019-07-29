@@ -1,6 +1,7 @@
 package com.cch.hiot2.ui.devicedetail;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import com.cch.hiot2.http.HttpResult;
 import com.cch.hiot2.http.HttpService;
 import com.cch.hiot2.http.ProgressDialogSubscriber;
 import com.cch.hiot2.http.UserPreferencesHelper;
+import com.cch.hiot2.ui.datahistory.DataHistoryActivity;
 
 import java.util.List;
 
@@ -106,14 +108,6 @@ public class DeviceDetailPresenter extends BasePresenter<DeviceDetailView> {
         final Switch switchs = item.findViewById(R.id.switchs);
         title.setText(updatastreams.getTitle());
 
-        value_look_more.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO:查看更多数据
-                getView().showToast("value_look_more");
-            }
-        });
-
         //updatastreams.getData_type() == 1     数值型通道
         //updatastreams.getData_type() == 2     布尔型、开关型数据
         //updatastreams.getData_type() == 3     GPS型数据
@@ -131,6 +125,7 @@ public class DeviceDetailPresenter extends BasePresenter<DeviceDetailView> {
                 //取集合中第一个数据
                 DeviceDetailEntity.DataList dataList = updatastreams.getDataList().get(0);
                 value.setText(dataList.getValue());
+                setHistoryClick(value_look_more,updatastreams.getData_type(),dataList);
             } else {
                 value.setText("--");
             }
@@ -169,6 +164,7 @@ public class DeviceDetailPresenter extends BasePresenter<DeviceDetailView> {
                     switch_img.setImageResource(R.mipmap.off);
                     switchs.setChecked(false);
                 }
+                setHistoryClick(value_look_more,updatastreams.getData_type(),dataList);
             }
 
             //如果通道为单向的，不可控制，开关按钮隐藏
@@ -179,6 +175,7 @@ public class DeviceDetailPresenter extends BasePresenter<DeviceDetailView> {
                 //如果通道为双向的，开关按钮显示，可控制。
                 switchs.setVisibility(View.VISIBLE);
                 setSwitchListener(switchs, switch_img, updatastreams);
+
             }
 
         } else if (updatastreams.getData_type() == 3) {
@@ -193,6 +190,7 @@ public class DeviceDetailPresenter extends BasePresenter<DeviceDetailView> {
                 //取集合中第一个数据
                 DeviceDetailEntity.DataList dataList = updatastreams.getDataList().get(0);
                 value.setText("经度：" + dataList.getLongitude() + "\n纬度：" + dataList.getLatitude());
+                setHistoryClick(value_look_more,updatastreams.getData_type(),dataList);
             } else {
                 value.setText("暂无位置数据");
             }
@@ -224,6 +222,7 @@ public class DeviceDetailPresenter extends BasePresenter<DeviceDetailView> {
                 //取集合中第一个数据
                 DeviceDetailEntity.DataList dataList = updatastreams.getDataList().get(0);
                 value.setText(dataList.getNews());
+                setHistoryClick(value_look_more,updatastreams.getData_type(),dataList);
             } else {
                 value.setText("暂无警告");
             }
@@ -251,6 +250,18 @@ public class DeviceDetailPresenter extends BasePresenter<DeviceDetailView> {
             put_value.setVisibility(View.GONE);
             value.setText("未知通道请更新APP后查看");
         }
+    }
+
+    private void setHistoryClick(ImageView put_value,final int data_type,final DeviceDetailEntity.DataList data) {
+        put_value.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, DataHistoryActivity.class);
+                intent.putExtra(DataHistoryActivity.DATA_TYPE_EXTRA,data_type);
+                intent.putExtra(DataHistoryActivity.DATA_UPDATA_STREAM_ID_EXTRA,data.getUpDataStreamId());
+                activity.startActivity(intent);
+            }
+        });
     }
 
     private void setSwitchListener(final Switch switchs, final ImageView switch_img,

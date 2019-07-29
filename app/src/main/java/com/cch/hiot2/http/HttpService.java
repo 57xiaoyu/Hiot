@@ -28,8 +28,8 @@ public interface HttpService {
     String base = "http://10.10.16.15/hiot";
 
 
-    String BASE_URL = base+"/";
-    String IMAGE_BASE_URL =base;//图片URL前缀
+    String BASE_URL = base + "/";
+    String IMAGE_BASE_URL = base;//图片URL前缀
 
     //登录
     @FormUrlEncoded
@@ -94,14 +94,34 @@ public interface HttpService {
      * 开关通道控制
      *
      * @param downdatastream_pk 向下通道id
-     * @param status 通道状态
-     * @param authorization token
+     * @param status            通道状态
+     * @param authorization     token
      * @return
      */
     @POST("downdatastream/{downdatastream_pk}/switch")
     Observable<HttpResult> postSwitch(
             @Path("downdatastream_pk") String downdatastream_pk,
             @Query("status") int status,
+            @Header("Authorization") String authorization
+    );
+
+
+    /**
+     * 获取开关类型历史数据
+     *
+     * @param data_type      数据类型 2：代表开关类类型
+     * @param upDataStreamId 向上通道id
+     * @param skip           起始条数索引 从0开始
+     * @param limit          总条数
+     * @param authorization  token
+     * @return
+     */
+    @GET("mongodb/{data_type}/{upDataStreamId}/{skip}/{limit}/some")
+    Observable<HttpResult<List<DeviceDetailEntity.DataList>>> getDataHistory(
+            @Path("data_type") int data_type,
+            @Path("upDataStreamId") String upDataStreamId,
+            @Path("skip") int skip,
+            @Path("limit") int limit,
             @Header("Authorization") String authorization
     );
 
