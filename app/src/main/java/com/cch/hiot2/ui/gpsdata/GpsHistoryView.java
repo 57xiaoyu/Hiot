@@ -10,3 +10,4 @@ public interface GpsHistoryView extends BaseView {
 
     void showToast(String msg);
 }
+

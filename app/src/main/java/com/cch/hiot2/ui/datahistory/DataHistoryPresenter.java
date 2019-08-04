@@ -27,11 +27,15 @@ public class DataHistoryPresenter extends BasePresenter<DataHistoryView> {
     public DataHistoryPresenter() {
     }
 
-
-
     public void getDataHistory(String updata_stream_id, int data_type, int index, int limit) {
 
-        Observable<HttpResult<List<DeviceDetailEntity.DataList>>> observable = service.getDataHistory(data_type, updata_stream_id, index, limit, preferencesHelper.getTokenValue());
+        Observable<HttpResult<List<DeviceDetailEntity.DataList>>> observable= service.getDataHistory(
+                data_type,
+                updata_stream_id,
+                index,
+                limit,
+                preferencesHelper.getTokenValue()
+        );
         toSubscribe(observable, new ProgressDialogSubscriber<HttpResult<List<DeviceDetailEntity.DataList>>>(activity) {
             @Override
             public void onNext(HttpResult<List<DeviceDetailEntity.DataList>> result) {

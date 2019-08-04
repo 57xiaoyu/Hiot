@@ -36,7 +36,9 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GpsHistoryActivity extends BaseActivity<GpsHistoryView, GpsHistoryPresenter> implements GpsHistoryView, AMap.OnMarkerClickListener, AMap.OnInfoWindowClickListener, GeocodeSearch.OnGeocodeSearchListener {
+public class GpsHistoryActivity extends BaseActivity<GpsHistoryView, GpsHistoryPresenter>
+        implements GpsHistoryView, AMap.OnMarkerClickListener,
+        AMap.OnInfoWindowClickListener, GeocodeSearch.OnGeocodeSearchListener {
 
     public static final String DATA_TYPE_EXTRA = "DATA_TYPE_EXTRA";
     public static final String DATA_UPDATA_STREAM_ID_EXTRA = "DATA_UPDATA_STREAM_ID_EXTRA";
@@ -120,8 +122,6 @@ public class GpsHistoryActivity extends BaseActivity<GpsHistoryView, GpsHistoryP
         });
     }
 
-
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -168,8 +168,9 @@ public class GpsHistoryActivity extends BaseActivity<GpsHistoryView, GpsHistoryP
      */
     private void getAddress(double v, double v1) {
         this.latLonPoint = new LatLonPoint(v, v1);
+        // 第一个参数表示一个Latlng，第二参数表示范围多少米，第三个参数表示是火系坐标系还是GPS原生坐标系
         RegeocodeQuery query = new RegeocodeQuery(latLonPoint, 100,
-                GeocodeSearch.AMAP);// 第一个参数表示一个Latlng，第二参数表示范围多少米，第三个参数表示是火系坐标系还是GPS原生坐标系
+                GeocodeSearch.AMAP);
         geocoderSearch.getFromLocationAsyn(query);// 设置同步逆地理编码请求
     }
 

@@ -21,7 +21,8 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DataHistoryActivity extends BaseActivity<DataHistoryView, DataHistoryPresenter> implements DataHistoryView {
+public class DataHistoryActivity extends BaseActivity<DataHistoryView, DataHistoryPresenter>
+        implements DataHistoryView {
 
     public static final String DATA_TYPE_EXTRA = "DATA_TYPE_EXTRA";
     public static final String DATA_UPDATA_STREAM_ID_EXTRA = "DATA_UPDATA_STREAM_ID_EXTRA";
@@ -88,7 +89,10 @@ public class DataHistoryActivity extends BaseActivity<DataHistoryView, DataHisto
                     yAxisValues.add(Float.valueOf(data.get(i).getStatus()));//点的集合
                     timing.add(data.get(i).getTiming());
                 }
-                MPChartHelper.setLineChart(lineChart, xAxisValues, yAxisValues, timing, "电平图 0：代表关 1：代表开", true, true);
+                MPChartHelper.setLineChart(lineChart, xAxisValues, yAxisValues,
+                        timing, "电平图 0：代表关 1：代表开",
+                        true, true
+                );
             } else if (data_type == 1) {
                 lineChart.setNoDataText("数值数据暂未实现");
             } else if (data_type == 3) {
@@ -106,3 +110,4 @@ public class DataHistoryActivity extends BaseActivity<DataHistoryView, DataHisto
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }
+
