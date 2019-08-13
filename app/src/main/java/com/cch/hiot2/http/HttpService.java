@@ -26,7 +26,8 @@ import rx.Observable;
 public interface HttpService {
     //String base = "http://192.168.10.106/hiot";
 //    String base = "http://10.10.16.15/hiot";
-    String base = "http://192.168.9.102/hiot";
+//    String base = "http://192.168.9.102/hiot";
+    String base = "http://114.115.179.78:8888/hiot";
 
 
     String BASE_URL = base + "/";
