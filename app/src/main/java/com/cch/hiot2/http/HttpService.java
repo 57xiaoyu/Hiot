@@ -27,7 +27,7 @@ public interface HttpService {
     //String base = "http://192.168.10.106/hiot";
 //    String base = "http://10.10.16.15/hiot";
 //    String base = "http://192.168.9.102/hiot";
-    String base = "http://114.115.179.78:8888/hiot";
+    String base = "http://192.168.10.106/hiot";
 
 
     String BASE_URL = base + "/";
@@ -106,6 +106,22 @@ public interface HttpService {
             @Query("status") int status,
             @Header("Authorization") String authorization
     );
+
+
+ /**
+     * 线上的版本    开关通道控制
+     *
+     * @param downdatastream_pk 向下通道id
+     * @param order            通道状态  控制指令:字符串格式，对GPS位置型。请按："longitude,latitude,elevation"（","为英文状态下的逗号；elevation可选）格式
+     * @param authorization     token
+     * @return
+     */
+   /* @POST("downdatastream/control/{downdatastream_pk}")
+    Observable<HttpResult> postSwitch(
+            @Path("downdatastream_pk") String downdatastream_pk,
+            @Query("order") String order,
+            @Header("Authorization") String authorization
+    );*/
 
 
     /**

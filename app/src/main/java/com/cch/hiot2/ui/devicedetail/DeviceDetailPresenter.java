@@ -42,6 +42,7 @@ public class DeviceDetailPresenter extends BasePresenter<DeviceDetailView> {
 
     //获取设备详情
     public void getDeviceDetail(String device_id) {
+
         Observable<HttpResult<DeviceDetailEntity>> observable
                 = service.getDeviceDetail(device_id, preferencesHelper.getTokenValue());
         toSubscribe(observable, new ProgressDialogSubscriber<HttpResult<DeviceDetailEntity>>(activity) {
